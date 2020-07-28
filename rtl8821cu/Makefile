@@ -61,10 +61,12 @@ MAKE_OPTS:= \
 	USER_EXTRA_CFLAGS="$(EXTRA_CFLAGS)" \
 	$(EXTRA_KCONFIG) \
 	PROJECT_DIR="$(PKG_BUILD_DIR)" \
+	src="$(PKG_BUILD_DIR)" \
+	KSRC="$(LINUX_DIR)" \
 	NOSTDINC_FLAGS="$(NOSTDINC_FLAGS)"
 	
 define Build/Compile
-	+$(MAKE) $(PKG_JOBS) -C "$(PKG_BUILD_DIR)" src="$(PKG_BUILD_DIR)" KSRC="$(LINUX_DIR)" \
+	+$(MAKE) $(PKG_JOBS) -C "$(PKG_BUILD_DIR)" \
 		$(MAKE_OPTS) \
 		modules
 endef
